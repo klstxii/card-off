@@ -6,11 +6,15 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': {
+      '/api': 'http://127.0.0.1:8000',
+      '/custom-api': {
         target: 'http://127.0.0.1:8000',
         changeOrigin: true,
-        
+        rewrite: (path) => path.replace(/^\/custom-api/, ''),
       },
     },
+  },
+  optimizeDeps: {
+    include: ['redux-thunk'],
   },
 })
