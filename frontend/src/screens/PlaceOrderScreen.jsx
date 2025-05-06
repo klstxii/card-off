@@ -4,8 +4,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import CheckoutSteps from '../components/CheckoutSteps'
 import Message from '../components/Message'
+import { createOrder } from '../actions/OrderActions'
+import { ORDER_CREATE_RESET } from '../constants/OrderConstants'
 
 function PlaceOrderScreen() {
+
+    const orderCreate = useSelector(state => state.orderCreate)
+    const { order, error, success } = orderCreate
+    
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const cart = useSelector(state => state.cart)
 
@@ -15,8 +23,29 @@ function PlaceOrderScreen() {
 
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
+    useEffect(() => {
+        if (!cart.paymentMethod) {
+          navigate('/payment');
+        }
+      }, [cart.paymentMethod, navigate]);
+
+    useEffect(() => {
+        if(success) {
+            navigate(`/order/${order._id}`)
+            dispatch({ type: ORDER_CREATE_RESET })
+        }
+    }, [success, navigate])
+
     const placeOrder = () => {
-        console.log('place order')
+        dispatch(createOrder({
+            orderItems: cart.cartItems,
+            shippingAddress: cart.shippingAddress,
+            paymentMethod: cart.paymentMethod,
+            itemsPrice: cart.itemsPrice,
+            shippingPrice: cart.shippingPrice,
+            taxPrice: cart.taxPrice,
+            totalPrice: cart.totalPrice,
+        }))
     }
 
   return (
@@ -110,6 +139,10 @@ function PlaceOrderScreen() {
                                 <Col>Total:</Col>
                                 <Col>${cart.totalPrice}</Col>
                             </Row>
+                        </ListGroup.Item>
+
+                        <ListGroup.Item>
+                            {error && <Message variant='danger'>{error}</Message>}
                         </ListGroup.Item>
 
                         <ListGroup.Item className="d-grid gap-2">
