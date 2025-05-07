@@ -14,7 +14,7 @@ function OrderScreen() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const [sdkReady, setSdkReady] = useState(false)
+    const paypalClientId = import.meta.env.VITE_PAYPAL_CLIENT_ID
 
     const orderDetails = useSelector(state => state.orderDetails)
     const { order, error, loading } = orderDetails
@@ -153,7 +153,7 @@ function OrderScreen() {
                                 <ListGroup.Item>
                                     {loadingPay && <Loader />}
                                     <PayPalScriptProvider 
-                                        options={{ "client-id": "" }}
+                                        options={{ "client-id": paypalClientId }}
                                     >
                                         <PayPalButtons
                                             createOrder={(data, actions) => {
