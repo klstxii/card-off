@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap"
 import { Routes, Route} from 'react-router-dom'
+import { PayPalScriptProvider } from "@paypal/react-paypal-js" 
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 
@@ -18,9 +19,11 @@ import OrderScreen from "./screens/OrderScreen"
 function App() {
   return (
     <>
+      
       <Header />
       <main className="py-3">
         <Container>
+        
           <Routes>
             <Route path='/' element={<HomeScreen />} />
             <Route path='/login' element={<LoginScreen />} />
@@ -33,6 +36,7 @@ function App() {
             <Route path='/product/:id' element={<ProductScreen />} />
             <Route path='/cart/:id?' element={<CartScreen />} />
           </Routes>
+        
         </Container>
       </main>
       <Footer />

@@ -15,6 +15,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['redux-thunk'],
+    include: ['redux-thunk', '@paypal/react-paypal-js' ],
   },
 })
