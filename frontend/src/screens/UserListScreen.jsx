@@ -29,7 +29,7 @@ function UserListScreen() {
         }
 
         
-    }, [dispatch, navigate, successDelete])
+    }, [dispatch, navigate, successDelete, userInfo])
 
     const deleteHandler = (id) => {
 
