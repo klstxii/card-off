@@ -8,6 +8,8 @@ import { getOrderDetails, payOrder } from '../actions/OrderActions'
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 import { ORDER_PAY_RESET } from '../constants/OrderConstants'
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function OrderScreen() {
 
     const { id: orderId } = useParams();
@@ -94,7 +96,7 @@ function OrderScreen() {
                                         <ListGroup.Item key={index}>
                                             <Row>
                                                 <Col md={1}>
-                                                    <Image src={item.image} alt={item.name} fluid rounded/>
+                                                    <Image src={`${BASE_URL}${item.image}`} alt={item.name} fluid rounded/>
                                                 </Col>
 
                                                 <Col>

@@ -7,7 +7,7 @@ import { listProductDetails } from '../actions/ProductActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 
-
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 function ProductScreen() {
     const [qty, setQty] = useState(1)
@@ -36,7 +36,7 @@ function ProductScreen() {
             :(
                 <Row>
                     <Col md={6}>
-                        <Image src={product.image} alt={product.name} fluid />
+                        <Image src={`${BASE_URL}${product.image}`} alt={product.name} fluid />
                     </Col>
 
                     <Col md={3}>

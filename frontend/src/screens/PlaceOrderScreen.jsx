@@ -7,6 +7,8 @@ import Message from '../components/Message'
 import { createOrder } from '../actions/OrderActions'
 import { ORDER_CREATE_RESET } from '../constants/OrderConstants'
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function PlaceOrderScreen() {
 
     const orderCreate = useSelector(state => state.orderCreate)
@@ -86,7 +88,7 @@ function PlaceOrderScreen() {
                                     <ListGroup.Item key={index}>
                                         <Row>
                                             <Col md={1}>
-                                                <Image src={item.image} alt={item.name} fluid rounded/>
+                                                <Image src={`${BASE_URL}${item.image}`} alt={item.name} fluid rounded/>
                                             </Col>
 
                                             <Col>
