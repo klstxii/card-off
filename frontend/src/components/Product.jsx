@@ -8,7 +8,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 function Product({product}) {
 
   return (
-    <Card className='my-3 p-3 rounded'>
+    <Card className='my-3 p-3 rounded fixed-card'>
         <Link to={`/product/${product._id}`}>
             <Card.Img src={`${BASE_URL}${product.image}`} />
         </Link>

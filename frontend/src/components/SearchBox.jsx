@@ -21,7 +21,7 @@ function SearchBox() {
     }
 
   return (
-    <Form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler} className="d-flex">
         <Form.Control
             type='text'
             name='q'
@@ -31,7 +31,7 @@ function SearchBox() {
 
         <Button
             type='submit'
-            variant='outline-success'
+            variant='primary'
             className='p-2'
         >
             Submit

@@ -1,3 +1,4 @@
+import './App.css';
 import { Container } from "react-bootstrap"
 import { Routes, Route} from 'react-router-dom'
 import { PayPalScriptProvider } from "@paypal/react-paypal-js" 
