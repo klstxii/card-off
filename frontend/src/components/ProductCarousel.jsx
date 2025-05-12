@@ -17,7 +17,7 @@ function ProductCarousel() {
 
     useEffect(() => {
         dispatch(listTopProducts())
-    }, dispatch)
+    }, [dispatch])
 
   return ( loading ? <Loader />
   :error
