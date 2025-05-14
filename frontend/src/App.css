@@ -9,6 +9,8 @@
   .fixed-card img {
     height: 180px;             /* Prevent image overflow */
     object-fit: contain;
+    border: 4px solid #000;
+    box-shadow: 5px 5px 0 #000;
   }
   
   .card-body {

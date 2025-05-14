@@ -99,7 +99,7 @@ function ProductEditScreen() {
   return (
     <div>
 
-        <Link to='/admin/productlist'>
+        <Link to='/admin/productlist' className='btn btn-light my-3'>
             Go Back
         </Link>
         <FormContainer>
@@ -126,7 +126,7 @@ function ProductEditScreen() {
                         <Form.Label>Price</Form.Label>
                         <Form.Control
                             type='number'
-                            placeholder='Enter PRice'
+                            placeholder='Enter Price'
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                         >
@@ -143,6 +143,7 @@ function ProductEditScreen() {
                             onChange={(e) => setImage(e.target.value)}
                             >
                             </Form.Control>
+                            <br/>
                             <Form.Control
                                 type='file'
                                 onChange={uploadFileHandler}
