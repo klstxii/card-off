@@ -81,7 +81,8 @@ function ShippingScreen() {
             </Form.Group>
 
             <br/>
-            <Button type='submit' variant='dark'>
+
+            <Button type='submit' variant='dark' >
                 Continue
             </Button>
 
